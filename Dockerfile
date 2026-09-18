@@ -14,17 +14,14 @@ COPY . .
 RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-s -w" -o /sweds .
 
 # --- Runtime stage ---
-FROM gcr.io/distroless/static-debian12:nonroot
+FROM gcr.io/distroless/static-debian12
 
 COPY --from=build /sweds /sweds
 # Baked sample config; override with a bind-mount at /config.yaml.
 COPY config.yaml /config.yaml
 
-# Writable home for the nonroot user; the default "./data" dir lands here.
-WORKDIR /home/nonroot
-
+# cwd is "/", so the default served dir "./data" resolves to "/data".
 ENV CONFIG_PATH=/config.yaml
 EXPOSE 8080
 
-USER nonroot
 ENTRYPOINT ["/sweds"]

@@ -75,10 +75,10 @@ docker build -t specialfish9/sweds:latest .
 ```
 
 Run with a persisted data volume (served dir defaults to `./data`, i.e.
-`/home/nonroot/data` inside the container):
+`/data` inside the container):
 
 ```sh
-docker run -p 8080:8080 -v sweds-data:/home/nonroot/data specialfish9/sweds:latest
+docker run -p 8080:8080 -v sweds-data:/data specialfish9/sweds:latest
 ```
 
 Override the baked config with your own:
@@ -86,7 +86,7 @@ Override the baked config with your own:
 ```sh
 docker run -p 8080:8080 \
   -v $PWD/config.yaml:/config.yaml \
-  -v sweds-data:/home/nonroot/data \
+  -v sweds-data:/data \
   specialfish9/sweds:latest
 ```
 

@@ -6,7 +6,7 @@ services:
       - "8080:8080"
     volumes:
       # Persist served files.
-      - sweds-data:/home/nonroot/data
+      - sweds-data:/data
       # Override the baked config (optional).
       - ./config.yaml:/config.yaml:ro
     restart: unless-stopped
