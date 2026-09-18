@@ -1,0 +1,7 @@
+addr: ":8080"
+dir: "./data"
+prefix: ""
+user: "alice"
+pass: "secret"
+# cert: "cert.pem"
+# key: "key.pem"

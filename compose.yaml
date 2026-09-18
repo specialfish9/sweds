@@ -1,0 +1,15 @@
+services:
+  sweds:
+    image: specialfish9/sweds:latest
+    build: .
+    ports:
+      - "8080:8080"
+    volumes:
+      # Persist served files.
+      - sweds-data:/home/nonroot/data
+      # Override the baked config (optional).
+      - ./config.yaml:/config.yaml:ro
+    restart: unless-stopped
+
+volumes:
+  sweds-data:
